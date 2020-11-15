@@ -6,7 +6,11 @@
 
       return { totStats };
     } catch (error) {
-      console.log(err);
+      this.error(
+        500,
+        'There was an error in calling the API, please try again in 5 minutes.'
+      );
+      return;
     }
   }
 </script>
@@ -15,6 +19,7 @@
   import CovidChart from '../components/CovidChart.svelte';
   import CovidStat from '../components/CovidStat.svelte';
   import TableContainer from '../components/TableContainer.svelte';
+  import About from './about.svelte';
 
   export let totStats;
 </script>
@@ -28,6 +33,6 @@
     <h1>Covid-19 Tracker</h1>
   </div>
 </div>
-<CovidStat {totStats} />
+<CovidStat {...totStats} />
 <CovidChart />
 <TableContainer />

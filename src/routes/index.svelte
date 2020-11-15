@@ -5,7 +5,9 @@
       const totStats = await requests.stats();
 
       return { totStats };
-    } catch (error) {}
+    } catch (error) {
+      console.log(err);
+    }
   }
 </script>
 
@@ -15,7 +17,6 @@
   import TableContainer from '../components/TableContainer.svelte';
 
   export let totStats;
-  console.log(totStats, 'totStats');
 </script>
 
 <svelte:head>
@@ -27,6 +28,6 @@
     <h1>Covid-19 Tracker</h1>
   </div>
 </div>
-<CovidStat />
+<CovidStat {totStats} />
 <CovidChart />
 <TableContainer />
